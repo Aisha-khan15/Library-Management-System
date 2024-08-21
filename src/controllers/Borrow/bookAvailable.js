@@ -14,7 +14,7 @@ const bookAvailable = async (req, res) => {
         new ApiResponse(
           200,
           { totalBooks, borrowedBooks, availableBooks },
-          "Book returned successfully!"
+          "Book availability fetch successfully!"
         )
       );
   } catch (error) {

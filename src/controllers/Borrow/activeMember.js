@@ -11,7 +11,9 @@ const activeMember = async (req, res) => {
 
     res
       .status(200)
-      .send(new ApiResponse(200, userReport, "Book returned successfully!"));
+      .send(
+        new ApiResponse(200, userReport, "Active members fetch successfully!")
+      );
   } catch (error) {
     console.log(error);
     res.status(500).send(new ApiResponse(500, error, "Failed!"));
