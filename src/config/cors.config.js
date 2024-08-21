@@ -1,4 +1,8 @@
-const whitelist = ["http://localhost:5000", "http://localhost:5173"];
+const whitelist = [
+  "http://localhost:5000",
+  "http://localhost:5173",
+  "https://library-management-system-bz8k.onrender.com",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
