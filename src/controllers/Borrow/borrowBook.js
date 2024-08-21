@@ -34,36 +34,6 @@ const borrowBook = async (req, res) => {
     res
       .status(200)
       .send(new ApiResponse(200, null, "Book borrowed successfully!"));
-    /*const borrow = await Borrow.findOne({
-      $and: [{ _id: id }, { user: req.user._id }],
-    });
-
-    if (!borrow) {
-      return res
-        .status(404)
-        .send(new ApiResponse(404, null, "Book not available!"));
-    }
-    const book = await Book.findOne({ id });
-
-    if (!book) {
-      return res
-        .status(404)
-        .send(
-          new ApiResponse(404, null, "Book with provided ID does not exist!")
-        );
-    }
-
-    if (book.copies > 0) {
-      book.copies -= 1;
-      book.borrowedCount += 1;
-      borrow.borrowedDate = new Date();
-
-      await borrow.save();
-      await book.save();
-      res
-        .status(200)
-        .send(new ApiResponse(200, { book, borrow }, "Book borrowed!"));
-    }*/
   } catch (error) {
     console.log(error);
     res.status(500).send(new ApiResponse(500, error, "Failed!"));
