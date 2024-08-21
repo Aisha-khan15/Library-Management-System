@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    let url = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/library";
+    let url = process.env.MONGO_URL;
 
     if (!url) {
       console.log(

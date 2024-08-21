@@ -10,9 +10,7 @@ const bookRouter = express.Router();
 bookRouter
   .route("/")
   .post(checkAuth, admin, bookController.add)
-  .get(checkAuth, getPaginated(Book, {}), bookController.get);
-
-bookRouter.route("/filter").get(checkAuth, bookController.getFilterBook);
+  .get(checkAuth, getPaginated(Book), bookController.get);
 
 bookRouter
   .route("/:id")

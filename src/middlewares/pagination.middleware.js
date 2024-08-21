@@ -1,7 +1,16 @@
-const getPaginated = (model, filters = {}) => {
+const getPaginated = (model) => {
   return async (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
+    const filter = {};
+
+    if (req.query.author) {
+      filter.author = req.query.author;
+    }
+
+    if (req.query.genre) {
+      filter.genre = req.query.genre;
+    }
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
@@ -9,7 +18,7 @@ const getPaginated = (model, filters = {}) => {
     const results = {};
 
     try {
-      const totalDocuments = await model.countDocuments(filters);
+      const totalDocuments = await model.countDocuments(filter);
 
       if (endIndex < totalDocuments) {
         results.next = {
@@ -29,7 +38,7 @@ const getPaginated = (model, filters = {}) => {
       results.current = page;
       results.pages = Math.ceil(totalDocuments / limit);
 
-      results.results = await model.find().limit(limit).skip(startIndex);
+      results.results = await model.find(filter).limit(limit).skip(startIndex);
       res.paginated = results;
 
       next();
