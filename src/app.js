@@ -18,6 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.use("/*", (req, res, next) => {
   return res
     .status(404)

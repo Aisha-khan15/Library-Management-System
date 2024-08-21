@@ -5,8 +5,6 @@ const returnBook = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { returnedDate } = req.body;
-
     if (!id) {
       return res
         .status(400)
@@ -21,11 +19,9 @@ const returnBook = async (req, res) => {
         .send(new ApiResponse(404, null, "Borrow record not found!"));
     }
 
-    const returned = await Borrow.create({
-      returnedDate,
-    });
+    borrow.returnedDate = new Date();
 
-    await returned.save();
+    await borrow.save();
 
     const book = borrow.book;
 
