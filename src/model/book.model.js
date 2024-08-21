@@ -25,7 +25,7 @@ const bookSchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
-  borrowedCount: {
+  borrowed: {
     type: Number,
     default: 0,
   },
