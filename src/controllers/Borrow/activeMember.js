@@ -1,12 +1,18 @@
-import { Borrow } from "../../model/borrow.model.js";
+import { User } from "../../model/user.model.js";
 import { ApiResponse } from "../../utils/ApiResponse.js";
 
 const activeMember = async (req, res) => {
   try {
-    const userReport = await Borrow.aggregate([
-      { $group: { _id: "$user", count: { $sum: 1 } } },
-      { $sort: { count: -1 } },
-      { $limit: 10 },
+    const userReport = await User.aggregate([
+      {
+        $group: {
+          _id: "$_id",
+          name: { $first: "$name" },
+          count: {
+            $sum: 1,
+          },
+        },
+      },
     ]);
 
     res

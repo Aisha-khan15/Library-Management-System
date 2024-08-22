@@ -13,7 +13,7 @@ const borrowHistory = async (req, res) => {
 
     res
       .status(200)
-      .send(new ApiResponse(200, history, "Book returned successfully!"));
+      .send(new ApiResponse(200, history, "Book history fetch successfully!"));
   } catch (error) {
     console.log(error);
     res.status(500).send(new ApiResponse(500, error, "Failed!"));

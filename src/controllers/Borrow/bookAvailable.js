@@ -4,7 +4,7 @@ import { ApiResponse } from "../../utils/ApiResponse.js";
 
 const bookAvailable = async (req, res) => {
   try {
-    const totalBooks = await Book.countDocuments();
+    const totalBooks = await Book.countDocuments({ copies: { $gt: 0 } });
     const borrowedBooks = await Borrow.countDocuments({ returnedDate: null });
     const availableBooks = totalBooks - borrowedBooks;
 
