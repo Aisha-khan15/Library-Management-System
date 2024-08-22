@@ -30,7 +30,9 @@ const returnBook = async (req, res) => {
 
     res
       .status(200)
-      .send(new ApiResponse(200, null, "Book returned successfully!"));
+      .send(
+        new ApiResponse(200, { borrow, book }, "Book returned successfully!")
+      );
   } catch (error) {
     console.log(error);
     res.status(500).send(new ApiResponse(500, error, "Failed!"));

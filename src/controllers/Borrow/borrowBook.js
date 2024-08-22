@@ -33,7 +33,7 @@ const borrowBook = async (req, res) => {
 
     res
       .status(200)
-      .send(new ApiResponse(200, null, "Book borrowed successfully!"));
+      .send(new ApiResponse(200, borrow, "Book borrowed successfully!"));
   } catch (error) {
     console.log(error);
     res.status(500).send(new ApiResponse(500, error, "Failed!"));

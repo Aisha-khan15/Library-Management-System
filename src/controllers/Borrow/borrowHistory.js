@@ -8,7 +8,7 @@ const borrowHistory = async (req, res) => {
     if (!history) {
       return res
         .status(404)
-        .send(new ApiResponse(404, null, "Borrow history not found!"));
+        .send(new ApiResponse(404, history, "Borrow history not found!"));
     }
 
     res
